@@ -8,14 +8,11 @@ import AddUser from "./AddUser/AddUser";
 import UsersTable from "./Table/Table";
 
 class App extends Component {
-
-
   render() {
-
     return (
       <div className="App">
-        <UsersTable />
         <AddUser />
+        <UsersTable />
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Container } from "semantic-ui-react";
+import { Table, Container, Button } from "semantic-ui-react";
 import '../Table/Table.css';
 import db from "../../database/firebase";
 
@@ -24,21 +24,21 @@ class UsersTable extends React.Component {
           users.push(user);
         });
         this.setState({ users });
-        console.log(users);
       });
     }
-      
 
+      
   render() {
     const { users } = this.state;
     return (
       <Container className='table-container'>
-        <Table celled>
+        <Table unstackable singleLine color={'violet'} size='small'>
           <Table.Header>
-            <Table.Row>
+            <Table.Row >
               <Table.HeaderCell>NAME</Table.HeaderCell>
               <Table.HeaderCell>LAST NAME</Table.HeaderCell>
               <Table.HeaderCell>AGE</Table.HeaderCell>
+              <Table.HeaderCell></Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
@@ -56,5 +56,4 @@ class UsersTable extends React.Component {
     );
   }
 }
-
 export default UsersTable;
