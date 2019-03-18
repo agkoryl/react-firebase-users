@@ -2,6 +2,7 @@ import React from "react";
 import { Table, Container, Button } from "semantic-ui-react";
 import '../Table/Table.css';
 import db from "../../database/firebase";
+import EditUser from "../EditUser.js/EditUser";
 
 class UsersTable extends React.Component {
 
@@ -12,7 +13,7 @@ class UsersTable extends React.Component {
     componentDidMount() {
         this.fetchUsers();
     }
-  
+
     fetchUsers() {
       db.ref("/users/").on("value", snapshot => {
         const users = [];
@@ -30,7 +31,6 @@ class UsersTable extends React.Component {
     handleRemove = (event) => {
       db.ref(`/users/${event.target.attributes.remove.value}`).remove();
     }
-
       
   render() {
     const { users } = this.state;
@@ -43,6 +43,7 @@ class UsersTable extends React.Component {
               <Table.HeaderCell>LAST NAME</Table.HeaderCell>
               <Table.HeaderCell>AGE</Table.HeaderCell>
               <Table.HeaderCell className="one wide"></Table.HeaderCell>
+              <Table.HeaderCell className="one wide"></Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
@@ -52,6 +53,7 @@ class UsersTable extends React.Component {
                   <Table.Cell>{user.firstName}</Table.Cell>
                   <Table.Cell>{user.lastName}</Table.Cell>
                   <Table.Cell>{user.age}</Table.Cell>
+                  <Table.Cell><EditUser edit={user}></EditUser></Table.Cell>
                   <Table.Cell><button className="remove-user" type="button" onClick={this.handleRemove} remove={user.id}>x</button></Table.Cell>
                 </Table.Row>
               ))}
