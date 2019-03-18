@@ -31,14 +31,14 @@ class UsersTable extends React.Component {
   render() {
     const { users } = this.state;
     return (
-      <Container className='table-container'>
-        <Table unstackable singleLine color={'violet'} size='small'>
+      <div className='table-container'>
+        <Table unstackable singleLine color={'violet'} size='small' style={{maxWidth: "700px", width: "80%"}}>
           <Table.Header>
             <Table.Row >
               <Table.HeaderCell>NAME</Table.HeaderCell>
               <Table.HeaderCell>LAST NAME</Table.HeaderCell>
               <Table.HeaderCell>AGE</Table.HeaderCell>
-              <Table.HeaderCell></Table.HeaderCell>
+              <Table.HeaderCell className="one wide"></Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
@@ -48,11 +48,13 @@ class UsersTable extends React.Component {
                   <Table.Cell>{user.firstName}</Table.Cell>
                   <Table.Cell>{user.lastName}</Table.Cell>
                   <Table.Cell>{user.age}</Table.Cell>
+                  <Table.Cell><button className="remove-user">x</button></Table.Cell>
                 </Table.Row>
               ))}
           </Table.Body>
         </Table>
-      </Container>
+      </div>
+  
     );
   }
 }
